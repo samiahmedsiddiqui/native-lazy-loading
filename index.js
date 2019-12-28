@@ -4,7 +4,7 @@ function nativeLazyLoading(html, options) {
   if (typeof html !== 'undefined' && html !== '') {
     const iframeRegex = /(<iframe (.*?) >)/gmi;
     const imgRegex = /(<img (.*?) \/>)/gmi;
-    const matchedIframe = html.match(imgRegex);
+    const matchedIframe = html.match(iframeRegex);
     const matchedIframeLength = matchedIframe.length;
     const matchedImg = html.match(imgRegex);
     const matchedImgLength = matchedImg.length;
