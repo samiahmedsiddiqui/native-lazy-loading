@@ -2,8 +2,10 @@
 
 function nativeLazyLoading(html, options) {
   if (typeof html !== 'undefined' && html !== '') {
+    const iframeRegex = /(<iframe (.*?) >)/gmi;
     const imgRegex = /(<img (.*?) \/>)/gmi;
-    const iframeRegex = /(<iframe (.*?) \>)/gmi;
+    const matchedIframe = html.match(imgRegex);
+    const matchedIframeLength = matchedIframe.length;
     const matchedImg = html.match(imgRegex);
     const matchedImgLength = matchedImg.length;
 
@@ -12,6 +14,7 @@ function nativeLazyLoading(html, options) {
     var breakAttrLength = [];
     var loopInit;
     var loopInnerInit;
+    var newIframeTag;
     var newImgTag;
 
     for (loopInit = 0; loopInit < matchedImgLength; loopInit += 1) {
@@ -26,8 +29,25 @@ function nativeLazyLoading(html, options) {
       }
 
       if (avoidLoading === 0) {
-        newImgTag = matchedImg[loopInit].split('/>')[0] + 'loading="lazy" />';
+        newImgTag = matchedImg[loopInit].split('/>')[0] + ' loading="lazy" />';
         html = html.replace(matchedImg[loopInit], newImgTag);
+      }
+    }
+
+    for (loopInit = 0; loopInit < matchedIframeLength; loopInit += 1) {
+      breakAttr = matchedIframe[loopInit].split(' ');
+      breakAttrLength = breakAttr.length;
+      avoidLoading = 0;
+      for (loopInnerInit = 0; loopInnerInit < breakAttrLength; loopInnerInit += 1) {
+        if (matchedIframe[loopInnerInit].startsWith('loading=')) {
+          avoidLoading = 1;
+          break;
+        }
+      }
+
+      if (avoidLoading === 0) {
+        newIframeTag = matchedIframe[loopInit].split('>')[0] + ' loading="lazy" >';
+        html = html.replace(matchedIframe[loopInit], newIframeTag);
       }
     }
   }
