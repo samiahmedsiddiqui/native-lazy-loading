@@ -1,0 +1,25 @@
+{
+  "name": "native-lazy-loading",
+  "version": "1.0.0",
+  "description": "Removes whitespace and other predefined characters.",
+  "main": "index.js",
+  "files": [
+    "LICENSE",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading.git"
+  },
+  "keywords": [
+    "native",
+    "lazy-loading",
+    "native-lazy-loading"
+  ],
+  "author": "Sami Ahmed Siddiqui <sami.siddiqui@yasglobal.com> (https://www.yasglobal.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading/issues"
+  },
+  "homepage": "https://github.com/samiahmedsiddiqui/native-lazy-loading#readme",
+}
