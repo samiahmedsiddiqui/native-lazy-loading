@@ -1,55 +1,118 @@
 'use strict';
 
-function nativeLazyLoading(html, options) {
+const parser = require('posthtml-parser');
+const render = require('posthtml-render');
+
+function contentTree(treeObj, applyOpt) {
+  var classes = [];
+  var classesLength = 0;
+  var className = '';
+  var contentLength = 0;
+  var loopInit = 0;
+  var loadingValue = applyOpt.defaultValue;
+  var tagName = '';
+
+  if (treeObj.content) {
+    contentLength = treeObj.content.length;
+    for (loopInit = 0; loopInit < contentLength; loopInit += 1) {
+      if (treeObj.content[loopInit].tag) {
+        treeObj.content[loopInit] = contentTree(treeObj.content[loopInit], applyOpt);
+      }
+    }
+  }
+
+  if (treeObj.tag) {
+    tagName = treeObj.tag.toLowerCase();
+    if (tagName === 'iframe' || tagName === 'img') {
+      if (!treeObj.attrs.loading) {
+        if (treeObj.attrs.class) {
+          classes = treeObj.attrs.class.split(' ');
+          classesLength = classes.length;
+          for (loopInit = 0; loopInit < classesLength; loopInit += 1) {
+            className = classes[loopInit];
+            if (className === '') {
+              continue;
+            }
+
+            if (applyOpt.auto && typeof applyOpt.auto === 'object' && applyOpt.auto[className]) {
+              loadingValue = 'auto';
+            } else if (applyOpt.lazy && typeof applyOpt.lazy === 'object' && applyOpt.lazy[className]) {
+              loadingValue = 'lazy';
+            } else if (applyOpt.eager && typeof applyOpt.eager === 'object' && applyOpt.eager[className]) {
+              loadingValue = 'eager';
+            }
+          }
+        }
+
+        if (loadingValue !== '') {
+          treeObj.attrs.loading = loadingValue;
+        }
+      }
+    }
+  }
+
+  return treeObj;
+}
+
+function nativeLazyLoading(html, options,   ) {
   if (typeof html !== 'undefined' && html !== '') {
-    const iframeRegex = /(<iframe (.*?) >)/gmi;
-    const imgRegex = /(<img (.*?) \/>)/gmi;
-    const matchedIframe = html.match(iframeRegex);
-    const matchedIframeLength = matchedIframe.length;
-    const matchedImg = html.match(imgRegex);
-    const matchedImgLength = matchedImg.length;
+    const htmlTree = parser(html);
+    const treeLength = htmlTree.length;
 
-    var avoidLoading = 0;
-    var breakAttr = [];
-    var breakAttrLength = [];
-    var loopInit;
-    var loopInnerInit;
-    var newIframeTag;
-    var newImgTag;
 
-    for (loopInit = 0; loopInit < matchedImgLength; loopInit += 1) {
-      breakAttr = matchedImg[loopInit].split(' ');
-      breakAttrLength = breakAttr.length;
-      avoidLoading = 0;
-      for (loopInnerInit = 0; loopInnerInit < breakAttrLength; loopInnerInit += 1) {
-        if (breakAttr[loopInnerInit].startsWith('loading=')) {
-          avoidLoading = 1;
-          break;
+    var classLength = 0;
+    var className = '';
+    var loopInit = 0;
+    var treeOptions = {
+      defaultValue: 'lazy'
+    };
+
+    if (typeof options === 'object') {
+      if (typeof options.defaultValue === 'string') {
+        treeOptions.defaultValue = options.defaultValue;
+      }
+
+      if (options.auto && typeof options.auto === 'object' && options.auto[0]) {
+        classLength = options.auto.length;
+        if (classLength > 0) {
+          treeOptions.auto = [];
+          for (loopInit = 0; loopInit < classLength; loopInit += 1) {
+            className = options.auto[loopInit];
+            treeOptions.auto[className] = className;
+          }
         }
       }
 
-      if (avoidLoading === 0) {
-        newImgTag = matchedImg[loopInit].split('/>')[0] + ' loading="lazy" />';
-        html = html.replace(matchedImg[loopInit], newImgTag);
-      }
-    }
-
-    for (loopInit = 0; loopInit < matchedIframeLength; loopInit += 1) {
-      breakAttr = matchedIframe[loopInit].split(' ');
-      breakAttrLength = breakAttr.length;
-      avoidLoading = 0;
-      for (loopInnerInit = 0; loopInnerInit < breakAttrLength; loopInnerInit += 1) {
-        if (matchedIframe[loopInnerInit].startsWith('loading=')) {
-          avoidLoading = 1;
-          break;
+      if (options.lazy && typeof options.lazy === 'object' && options.lazy[0]) {
+        classLength = options.lazy.length;
+        if (classLength > 0) {
+          treeOptions.lazy = [];
+          for (loopInit = 0; loopInit < classLength; loopInit += 1) {
+            className = options.lazy[loopInit];
+            treeOptions.lazy[className] = className;
+          }
         }
       }
 
-      if (avoidLoading === 0) {
-        newIframeTag = matchedIframe[loopInit].split('>')[0] + ' loading="lazy" >';
-        html = html.replace(matchedIframe[loopInit], newIframeTag);
+      if (options.eager && typeof options.eager === 'object' && options.eager[0]) {
+        classLength = options.eager.length;
+        if (classLength > 0) {
+          treeOptions.eager = [];
+          for (loopInit = 0; loopInit < classLength; loopInit += 1) {
+            className = options.eager[loopInit];
+            treeOptions.eager[className] = className;
+          }
+        }
       }
     }
+
+    for (loopInit = 0; loopInit < treeLength; loopInit += 1) {
+      if (htmlTree[loopInit].tag) {
+        htmlTree[loopInit] = contentTree(htmlTree[loopInit], treeOptions);
+      }
+    }
+
+    html = render(htmlTree, options);
   }
 
   return html;

@@ -4,9 +4,12 @@
   "description": "Removes whitespace and other predefined characters.",
   "main": "index.js",
   "files": [
-    "LICENSE",
-    "index.js"
+    "index.js",
+    "test/runkitExample.js"
   ],
+  "scripts": {
+    "test": "node test/all.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading.git"
@@ -22,4 +25,9 @@
     "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading/issues"
   },
   "homepage": "https://github.com/samiahmedsiddiqui/native-lazy-loading#readme",
+  "dependencies": {
+    "posthtml-parser": "^0.4.2",
+    "posthtml-render": "^1.1.5"
+  },
+  "runkitExampleFilename": "test/runkitExample.js"
 }
