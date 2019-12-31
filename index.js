@@ -5,7 +5,8 @@ const render = require('posthtml-render');
 
 function contentTree(treeObj, applyOpt, compatibility, library) {
   const addClass = [];
-  const loadingClass = 'native-lazy-loading';
+  const defaultClass = 'native-lazy-loading';
+  const loadingClass = 'lazy-loading';
 
   var checkCompClass = 0;
   var classes = [];
@@ -80,6 +81,7 @@ function contentTree(treeObj, applyOpt, compatibility, library) {
       }
 
       if (addClass.length > 0) {
+        addClass.unshift(defaultClass);
         if (treeObj.attrs.class) {
           treeObj.attrs.class += ' ' + addClass.join(' ');
         } else {

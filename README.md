@@ -22,7 +22,7 @@ If you are not using any third-party library so this plugin helps you to do that
 ```javascript
 <script>
   if ('loading' in HTMLImageElement.prototype) {
-    const images = document.getElementsByClassName('native-lazy-loading');
+    const images = document.querySelectorAll('.native-lazy-loading');
     images.forEach(img => {
       img.src = img.dataset.src;
     });
