@@ -1,7 +1,7 @@
 {
   "name": "native-lazy-loading",
   "version": "1.0.0",
-  "description": "Removes whitespace and other predefined characters.",
+  "description": "Add the loading attribute to completely defer the loading of offscreen images and iframes.",
   "main": "index.js",
   "files": [
     "index.js",
@@ -17,7 +17,11 @@
   "keywords": [
     "native",
     "lazy-loading",
-    "native-lazy-loading"
+    "native-lazy-loading",
+    "lazysizes",
+    "web.dev",
+    "lazyload",
+    "data-src"
   ],
   "author": "Sami Ahmed Siddiqui <sami.siddiqui@yasglobal.com> (https://www.yasglobal.com/)",
   "license": "MIT",
