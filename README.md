@@ -63,6 +63,17 @@ import nativeLazyLoading from 'native-lazy-loading';
 
 ## Parameters
 
+| Attributes    |              Type             | Required |       Default       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------|:-----------------------------:|:--------:|:-------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| html          |             String            |    Yes   |                     | HTML in which `loading` attribute needs to be applied on `image` and `iframe` tags.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| options       | [Object](#options-attributes) |    No    |   `loading="lazy"`  | By default, it adds `loading="lazy"` in images and iframe tags. If you like to apply different `loading` attributes **OR** only apply `loading` attributes in a specific image and iframe then you use this attribute.<br><br>You can find more details in [Examples with loading attribute only](#examples-with-loading-attribute-only).                                                                                                                                                                                                                    |
+| compatibility |            Boolean            |    No    |       `false`       | Just pass `true` if you like to apply `lazysizes` or any other third-party lazyload for the unsupported browsers/versions with the help of this package. <br><br>By enabling this, It will do the following things:<br><br>1. Change `src` to `data-src`<br>2. Add custom class like `lazyload` by default which is used by `lazysizes`.<br>3. Add placeholder image if set in `library` attribute.<br><br>Check [Examples with `loading` attribute and unsupported browsers](#examples-with-loading-attribute-and-unsupported-browsers) for further details |
+| library       | [Object](#library-attributes) |    No    | `class: 'lazyload'` | This option is used if you like to use any third party lazyload other than `lazysizes` to handle browsers that don't yet support `native lazy-loading`.                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+### `options` Attributes
+
+### `library` Attributes
+
 ## Examples with `loading` attribute only
 
 ### Add `loading="lazy"` attribute on all images and iFrames
@@ -146,7 +157,7 @@ console.log(html);
 </div>
 ```
 
-### Add `loading="lazy"` attribute on all images and iFrames except on `no-lazy` and `header-images` class in `Node.js`
+### Add `loading="lazy"` attribute on all images and iFrames except on `no-lazy` and `header-images` class
 
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
@@ -563,6 +574,9 @@ console.log(html);
   </div>
 </div>
 ```
+
+**NOTE:** Make sure to add the script as mentioned in the description before clsoing the `</body>` tag if you are willing to use `lazysizes` for unsupported versions/browsers.
+
 ## Return
 
 HTML with adding `loading` attribute on image and iFrame tags. Also, change `src` with `data-src` if `compatibility` set to `true` and apply the `lazysizes` class for unsupported browsers, if you like to apply separate class then you can define it in `library` object.
