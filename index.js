@@ -102,7 +102,7 @@ function nativeLazyLoading(html, options, compatibility, library) {
     var className = '';
     var lib = {
       class: 'lazyload',
-      newSrc: 'loading.gif',
+      newSrc: '',
       notAllowed: []
     };
     var loopInit = 0;
