@@ -46,6 +46,11 @@ function contentTree(treeObj, applyOpt) {
 
         if (loadingValue !== '') {
           treeObj.attrs.loading = loadingValue;
+          if (treeObj.attrs.class) {
+            treeObj.attrs.class += ' native-lazy-loading';
+          } else {
+            treeObj.attrs.class = 'native-lazy-loading';
+          }
         }
       }
     }
