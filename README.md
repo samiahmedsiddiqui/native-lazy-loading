@@ -11,9 +11,9 @@ Add the `loading` attribute to completely defer the loading of offscreen images 
 
 Here are the supported values for the loading attribute:
 
-  - `auto`: Default lazy-loading behavior of the browser, which is the same as not including the attribute.
-  - `lazy`: Defer loading of the resource until it reaches a calculated distance from the viewport.
-  - `eager`: Load the resource immediately, regardless of where it's located on the page  
+- `auto`: Default lazy-loading behavior of the browser, which is the same as not including the attribute.
+- `lazy`: Defer loading of the resource until it reaches a calculated distance from the viewport.
+- `eager`: Load the resource immediately, regardless of where it's located on the page  
 
 This feature introduced starting with Chrome 76. The `loading` attribute should not affect code that currently lazy-loads your assets in any way. It is important to continue to use a third-party library along with `loading="lazy"` is to provide a polyfill for browsers that do not yet support the attribute. 
 
