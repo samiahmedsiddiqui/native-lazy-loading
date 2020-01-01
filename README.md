@@ -39,7 +39,7 @@ If you are not using any third-party library so this plugin helps you to do that
 </script>
 ```
 
-If you don't like to use the `loading` attribute and want to disable it so just pass the  `defaultValue: ''`  as shown in [Disable Native Load and use  `lazysizes` library](#disable-native-load-and-use-lazysizes-library) example. In this case, you need to add the below-mentioned script before closing the `</body>` tag.
+If you don't like to use the `loading` attribute and want to disable it so just pass the  `defaultValue: ''`  as shown in [Disable Native Load and use `lazysizes` library](#disable-native-load-and-use-lazysizes-library) example. In this case, you need to add the below-mentioned script before closing the `</body>` tag.
 
 #### Use `lazysizes` without `loading` attribute
 
@@ -382,7 +382,7 @@ console.log(html);
 
 ## Examples without `loading` attribute
 
-### Disable Native Load and use  `lazysizes` library
+### Disable Native Load and use `lazysizes` library
 
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
