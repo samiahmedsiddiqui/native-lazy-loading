@@ -17,14 +17,16 @@ Here are the supported values for the loading attribute:
 
 This feature introduced starting with Chrome 76. The `loading` attribute should not affect code that currently lazy-loads your assets in any way. It is important to continue to use a third-party library along with `loading="lazy"` is to provide a polyfill for browsers that do not yet support the attribute. 
 
-If you are not using any third-party library so this plugin helps you to do that. This plugin replace `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable ``. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/). 
+If you are not using any third-party library so this plugin helps you to do that. This plugin replace `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable `compatibility`. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/). 
 
 ```javascript
 <script>
   if ('loading' in HTMLImageElement.prototype) {
     const images = document.querySelectorAll('.native-lazy-loading');
     images.forEach(img => {
-      img.src = img.dataset.src;
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+      }
     });
   } else {
     // Dynamically import the LazySizes library
