@@ -17,7 +17,9 @@ Here are the supported values for the loading attribute:
 
 This feature introduced starting with Chrome 76. The `loading` attribute should not affect code that currently lazy-loads your assets in any way. It is important to continue to use a third-party library along with `loading="lazy"` is to provide a polyfill for browsers that do not yet support the attribute. 
 
-If you are not using any third-party library so this plugin helps you to do that. This plugin replace `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable `compatibility`. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/). 
+If you are not using any third-party library so this plugin helps you to do that. This plugin replaces `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable `compatibility`. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [Lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/). 
+
+#### `loading` attribute with `lazysizes`
 
 ```javascript
 <script>
@@ -34,6 +36,19 @@ If you are not using any third-party library so this plugin helps you to do that
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js';
     document.body.appendChild(script);
   }
+</script>
+```
+
+If you don't like to use the `loading` attribute and want to disable it so just pass the  `defaultValue: ''`  as shown in [Disable Native Load and use  `lazysizes` library](#disable-native-load-and-use-lazysizes-library) example. In this case, you need to add the below-mentioned script before closing the `</body>` tag.
+
+#### Use `lazysizes` without `loading` attribute
+
+```javascript
+<script>
+  // Dynamically import the LazySizes library
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js';
+  document.body.appendChild(script);
 </script>
 ```
 
@@ -125,7 +140,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -168,7 +183,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -215,7 +230,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -263,7 +278,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -306,7 +321,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -351,7 +366,7 @@ var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/imag
                   </div>
                 </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools"  class="lazyload"></iframe>
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
               </div>
             </div>`;
 
@@ -363,11 +378,63 @@ html = nativeLazyLoading(html, {}, true, {
 console.log(html);
 ```
 
-**NOTE:** Make sure to add the script as mentioned in the description before clsoing the `</body>` tag if you are willing to use `lazysizes` for unsupported versions/browsers.
+**NOTE:** Make sure to add the [script](#loading-attribute-with-lazysizes) as mentioned in the description before closing the `</body>` tag if you are willing to use `lazysizes` for unsupported versions/browsers.
+
+## Examples without `loading` attribute
+
+### Disable Native Load and use  `lazysizes` library
+
+```javascript
+const nativeLazyLoading = require('native-lazy-loading');
+var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
+            <div class="white logos">
+              <div class="container">
+                <div class="testimonials">
+                  <div class="item">
+                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="lazyload" />
+                  </div>
+                  <div class="item">
+                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WPs Engine Logo" title="WP Engine Logo" class="lazyload" />
+                  </div>
+                </div>
+
+                <iframe src="https://www.w3schools.com" name="w3schools" class="lazyload"></iframe>
+              </div>
+            </div>`;
+
+html = nativeLazyLoading(
+  html, {
+    defaultValue: ''
+  },
+  true
+);
+
+console.log(html);
+```
+
+**NOTE:** Make sure to add the [script](#use-lazysizes-without-loading-attribute) as mentioned in the description before closing the `</body>` tag.
 
 ## Return
 
-HTML with adding `loading` attribute on image and iFrame tags. Also, change `src` with `data-src` if `compatibility` set to `true` and apply the `lazysizes` class for unsupported browsers, if you like to apply separate class then you can define it in `library` object.
+HTML with adding `loading` attribute on image and iFrame tags. Also, change `src` with `data-src` if `compatibility` set to `true` and apply the `lazysizes` class for unsupported browsers, if you like to apply a separate class then you can define it in `library` object.
 
 ## Tested
 
