@@ -1,5 +1,5 @@
 const nativeLazyLoading = require('../index');
-const html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class=" abc no-lazy"/>
+const html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="abc no-lazy"/>
               <div class="white logos">
                 <div class="container">
                   <div class="testimonials">
