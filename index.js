@@ -14,7 +14,9 @@ function contentTree(treeObj, applyOpt, compatibility, library) {
   var className = '';
   var contentLength = 0;
   var loopInit = 0;
+  var loopNotAllowed = 0;
   var loadingValue = applyOpt.defaultValue;
+  var notAllowedLength = 0;
   var tagName = '';
 
   if (treeObj.content) {
@@ -55,10 +57,13 @@ function contentTree(treeObj, applyOpt, compatibility, library) {
 
       if (compatibility && compatibility === true) {
         if (library.notAllowed.length > 0) {
+          notAllowedLength = library.notAllowed.length;
           for (loopInit = 0; loopInit < classesLength; loopInit += 1) {
-            if (library.notAllowed[loopInit] === classes[loopInit]) {
-              checkCompClass = 1;
-              break;
+            for (loopNotAllowed = 0; loopNotAllowed < notAllowedLength; loopNotAllowed += 1) {
+              if (library.notAllowed[loopNotAllowed] === classes[loopInit]) {
+                checkCompClass = 1;
+                break;
+              }
             }
           }
         }
