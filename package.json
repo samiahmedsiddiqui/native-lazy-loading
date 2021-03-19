@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/samiahmedsiddiqui/native-lazy-loading#readme",
   "dependencies": {
-    "posthtml-parser": "^0.4.2",
-    "posthtml-render": "^1.1.5"
+    "posthtml-parser": "^0.7.1",
+    "posthtml-render": "^1.4.0"
   },
   "runkitExampleFilename": "test/runkitExample.js"
 }
