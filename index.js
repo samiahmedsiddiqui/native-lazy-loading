@@ -1,6 +1,6 @@
 'use strict';
 
-const parser = require('posthtml-parser');
+const parser = require('posthtml-parser').default;
 const render = require('posthtml-render');
 
 function contentTree(treeObj, applyOpt, compatibility, library) {
