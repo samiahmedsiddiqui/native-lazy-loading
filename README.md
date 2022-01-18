@@ -1,6 +1,6 @@
 # native-lazy-loading
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Dependency Status][dependency-image]][dependency-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Open Issues][issues-image]][issues-url] [![License][license-image]][license-url]
 
 Add the `loading` attribute to completely defer the loading of offscreen images and iframes that can be reached by scrolling:
 
@@ -442,13 +442,16 @@ This package is tested with the `Node.js` and `React` Application.
 
 [npm-image]: https://img.shields.io/npm/v/native-lazy-loading.svg
 [npm-url]: https://www.npmjs.com/package/native-lazy-loading
-[downloads-image]: https://img.shields.io/npm/dm/native-lazy-loading.svg
+[downloads-image]: https://img.shields.io/npm/dt/native-lazy-loading.svg
 
-[travis-image]: https://img.shields.io/travis/com/samiahmedsiddiqui/native-lazy-loading.svg?label=travis-ci
-[travis-url]: https://travis-ci.com/samiahmedsiddiqui/native-lazy-loading
+[travis-image]: https://app.travis-ci.com/samiahmedsiddiqui/native-lazy-loading.svg?branch=main
+[travis-url]: https://app.travis-ci.com/github/samiahmedsiddiqui/native-lazy-loading
 
 [appveyor-url]: https://ci.appveyor.com/project/samiahmedsiddiqui/native-lazy-loading
 [appveyor-image]: https://img.shields.io/appveyor/ci/samiahmedsiddiqui/native-lazy-loading.svg?label=appveyor
 
-[dependency-image]: https://img.shields.io/david/samiahmedsiddiqui/native-lazy-loading.svg
-[dependency-url]: https://david-dm.org/samiahmedsiddiqui/native-lazy-loading
+[issues-image]: https://img.shields.io/github/issues/samiahmedsiddiqui/native-lazy-loading
+[issues-url]: https://github.com/samiahmedsiddiqui/native-lazy-loading/issues
+
+[license-image]: https://img.shields.io/github/license/samiahmedsiddiqui/native-lazy-loading
+[license-url]: https://github.com/samiahmedsiddiqui/native-lazy-loading/blob/main/LICENSE

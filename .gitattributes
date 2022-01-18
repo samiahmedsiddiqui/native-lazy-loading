@@ -5,9 +5,8 @@
 *.js text eol=lf
 
 # Remove files using `git archive`.
-.*                      export-ignore
-appveyor.yml            export-ignore
-src                     export-ignore
-test/*                  export-ignore
-!test/runkitExample.js  export-ignore
-tsconfig.json           export-ignore
+.*             export-ignore
+appveyor.yml   export-ignore
+src            export-ignore
+test           export-ignore
+tsconfig.json  export-ignore

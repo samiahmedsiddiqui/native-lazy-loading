@@ -1,13 +1,13 @@
 {
   "name": "native-lazy-loading",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Add the loading attribute to completely defer the loading of offscreen images and iframes.",
   "main": "index.js",
   "types": "types/index.d.ts",
   "files": [
     "LICENSE",
     "index.js",
-    "test/runkitExample.js",
+    "runkitExample.js",
     "types/index.d.ts"
   ],
   "scripts": {
@@ -38,7 +38,7 @@
     "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading/issues"
   },
   "homepage": "https://github.com/samiahmedsiddiqui/native-lazy-loading#readme",
-  "runkitExampleFilename": "test/runkitExample.js",
+  "runkitExampleFilename": "runkitExample.js",
   "dependencies": {
     "posthtml-parser": "0.10.2",
     "posthtml-render": "3.0.0"
