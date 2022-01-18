@@ -3,12 +3,21 @@
   "version": "1.1.0",
   "description": "Add the loading attribute to completely defer the loading of offscreen images and iframes.",
   "main": "index.js",
+  "types": "types/index.d.ts",
   "files": [
+    "LICENSE",
     "index.js",
-    "test/runkitExample.js"
+    "test/runkitExample.js",
+    "types/index.d.ts"
   ],
   "scripts": {
-    "test": "node test/all.js"
+    "build": "rm -f index.js && tsc",
+    "lint": "eslint .",
+    "lint:js": "eslint . --ext .js",
+    "lint:ts": "eslint . --ext .ts",
+    "test": "npm run test:eager && npm run test:lazy",
+    "test:eager": "mocha test/eager.js",
+    "test:lazy": "mocha test/lazy.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +38,18 @@
     "url": "https://github.com/samiahmedsiddiqui/native-lazy-loading/issues"
   },
   "homepage": "https://github.com/samiahmedsiddiqui/native-lazy-loading#readme",
+  "runkitExampleFilename": "test/runkitExample.js",
   "dependencies": {
-    "posthtml-parser": "^0.8.5",
-    "posthtml-render": "^1.4.0"
+    "posthtml-parser": "0.10.2",
+    "posthtml-render": "3.0.0"
   },
-  "runkitExampleFilename": "test/runkitExample.js"
+  "devDependencies": {
+    "@types/node": "17.0.9",
+    "@typescript-eslint/eslint-plugin": "5.10.0",
+    "@typescript-eslint/parser": "5.10.0",
+    "eslint": "8.7.0",
+    "mocha": "9.1.4",
+    "tsd": "0.19.1",
+    "typescript": "4.5.4"
+  }
 }
