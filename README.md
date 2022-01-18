@@ -15,9 +15,9 @@ Here are the supported values for the loading attribute:
 - `lazy`: Defer loading of the resource until it reaches a calculated distance from the viewport.
 - `eager`: Load the resource immediately, regardless of where it's located on the page.
 
-This feature introduced starting with Chrome 76. The `loading` attribute should not affect code that currently lazy-loads your assets in any way. It is important to continue to use a third-party library along with `loading="lazy"` is to provide a polyfill for browsers that do not yet support the attribute. 
+This feature introduced starting with Chrome 76. The `loading` attribute should not affect code that currently lazy-loads your assets in any way. It is important to continue to use a third-party library along with `loading="lazy"` is to provide a polyfill for browsers that do not yet support the attribute.
 
-If you are not using any third-party library so this plugin helps you to do that. This plugin replaces `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable `compatibility`. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [Lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/). 
+If you are not using any third-party library so this plugin helps you to do that. This plugin replaces `src` with `data-src` to avoid an eager load in unsupported browsers. By default, it adds the `lazyload` class if you enable `compatibility`. You need to add the below-mentioned script before closing the `</body>` tag to use [lazysizes](https://github.com/aFarkas/lazysizes) in unsupported browsers. [Lazysizes](https://github.com/aFarkas/lazysizes) is a popular JavaScript lazy-loading library recommended by [web.dev](https://web.dev/).
 
 #### `loading` attribute with `lazysizes`
 
@@ -111,81 +111,81 @@ import nativeLazyLoading from 'native-lazy-loading';
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html);
 
 console.log(html);
 ```
 
-### Add `loading="lazy"` attribute on all images and iFrames except on `no-lazy` and `header-images` class
+### Add `loading="lazy"` attribute on all images and iFrames except that contains `no-lazy` or `header-images` class
 
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html, {
   auto: ['no-lazy', 'header-images']
@@ -201,38 +201,38 @@ console.log(html);
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html, {
   lazy: ['testing-lazyload'],
@@ -249,38 +249,38 @@ console.log(html);
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html, {}, true);
 
@@ -292,38 +292,38 @@ console.log(html);
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html, {}, true, {
   class: 'lazy'
@@ -337,38 +337,38 @@ console.log(html);
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(html, {}, true, {
   class: 'lazy',
@@ -387,38 +387,38 @@ console.log(html);
 ```javascript
 const nativeLazyLoading = require('native-lazy-loading');
 var html = `<img src="https://www.yasglobal.com/wp-content/themes/yasglobal/images-cus/logo.svg" alt="YAS Global Logo" title="YAS Global Logo" class="no-lazy"/>
-            <div class="white logos">
-              <div class="container">
-                <div class="testimonials">
-                  <div class="item">
-                    <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
-                  </div>
-                  <div class="item">
-                    <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
-                  </div>
-                </div>
+<div class="white logos">
+  <div class="container">
+    <div class="testimonials">
+      <div class="item">
+        <img src="/wordpress-logo.svg" style="margin-top: -9px;" alt="WordPress Logo" title="WordPress Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/drupal-logo.svg" style="margin-top: -9px;" alt="Drupal Logo" title="Drupal Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentful-logo.svg" style="margin-top: -9px;" alt="Contentful Logo" title="Contentful Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/contentstack-logo.svg" style="margin-top: -9px;" alt="ContentStack Logo" title="ContentStack Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/netlify-logo.svg" style="margin-top: -9px;" alt="Netlify Logo" title="Netlify Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/heroku-logo.svg" style="margin-top: -9px;" alt="Heroku Logo" title="Heroku Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/pantheon-logo.svg" style="margin-top: -9px;" alt="Pantheon Logo" title="Pantheon Logo" class="testing-lazyload" />
+      </div>
+      <div class="item">
+        <img src="/wpengine-logo.svg" style="margin-top: -9px;" alt="WP Engine Logo" title="WP Engine Logo" class="testing-lazyload" />
+      </div>
+    </div>
 
-                <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
-              </div>
-            </div>`;
+    <iframe src="https://www.w3schools.com" name="w3schools" class="testing-lazyload"></iframe>
+  </div>
+</div>`;
 
 html = nativeLazyLoading(
   html, {
@@ -438,7 +438,7 @@ HTML with adding `loading` attribute on image and iFrame tags. Also, change `src
 
 ## Tested
 
-This package is tested with the `Node.js` and `React` Application. 
+This package is tested with the `Node.js` and `React` Application.
 
 [npm-image]: https://img.shields.io/npm/v/native-lazy-loading.svg
 [npm-url]: https://www.npmjs.com/package/native-lazy-loading
